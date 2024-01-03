@@ -9,7 +9,7 @@ type ToggleEventProps = {
 }
 
 export default function ToggleEvnt({event, children, invert = false}: ToggleEventProps) {
-    const {data} = useBoolEvnt(event);
-    const display = invert ? !data : data;
+    const {value} = useBoolEvnt(event);
+    const display = invert ? !value : value;
     return display ? children : null;
 }

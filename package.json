@@ -1,10 +1,22 @@
 {
-  "name": "evnts",
-  "version": "1.0.0",
+  "name": "@marius.brt/evnts",
+  "author": "Marius Brouty",
+  "description": "Evnts is a state manager library for React",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Marius-brt/Evnts"
+  },
+  "version": "1.0.2",
   "license": "MIT",
   "scripts": {
     "build": "tsup ./lib"
   },
+  "keywords": [
+    "react",
+    "state",
+    "manager",
+    "event"
+  ],
   "files": [
     "dist",
     "package.json"
