@@ -68,6 +68,7 @@ The `createEvent` function takes an optional third parameter: the options of the
 - `storageKey` (`string`): The key to use in the storage. The default value `evnts-[event name]`.
 - `setDefaultIfFailedLoading` (`boolean`): If it's set to `true`, the event will be set to the initial value if the
   loading failed. It's enabled by default.
+- `debounce` (`number`): The debounce time before saving in milliseconds. The default value is `200`.
 
 ### useEvnt
 

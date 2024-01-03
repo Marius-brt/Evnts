@@ -5,6 +5,7 @@ export default class Evnt<T> {
     private readonly name: string;
     private readonly options: EvntOptions<T>;
     private readonly defaultVal: T;
+    private debounceTimeout?: number;
 
     constructor(name: string, value: T, options?: EvntOptions<T>) {
         this.name = name;
@@ -31,6 +32,17 @@ export default class Evnt<T> {
         }
     }
 
+    private debounce() {
+        if (this.options.debounce && this.options.debounce > 0) {
+            if (this.debounceTimeout) clearTimeout(this.debounceTimeout)
+            this.debounceTimeout = setTimeout(() => {
+                this.save()
+            }, this.options.debounce)
+        } else {
+            this.save()
+        }
+    }
+
     private save() {
         const storage = this.options.storage || localStorage
         if (this.options.onSave) storage.setItem(this.options.storageKey || "evnts-" + this.name, this.options.onSave(this.value))
@@ -52,7 +64,7 @@ export default class Evnt<T> {
         if (value !== undefined) {
             this.value = value
             if (this.options.persist)
-                this.save()
+                this.debounce()
         }
     }
 

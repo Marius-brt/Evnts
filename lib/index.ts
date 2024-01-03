@@ -10,10 +10,12 @@ export type EvntOptions<T> = {
     storage?: Storage,
     storageKey?: string,
     setDefaultIfFailedLoading?: boolean,
+    debounce?: number,
 }
 
 const defaultOptions: EvntOptions<any> = {
     setDefaultIfFailedLoading: true,
+    debounce: 200,
 }
 
 export function createEvnt<T>(eventName: string, value: T, options?: EvntOptions<T>) {
